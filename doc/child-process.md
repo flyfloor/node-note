@@ -64,4 +64,18 @@ ls.on('close', function (code) {
 
 ### fork
 
-create a child process, execute with node, difference between spawn is that will create a communication pipe, allow to interacte with parent process
+create a child process, execute with node, difference between spawn is that will create a communication pipe, allow to interacte with other processes
+
+```
+var n = child_process.fork('./child.js');
+n.on('message', function(m) {
+  console.log('PARENT got message:', m);
+});
+n.send({ hello: 'world' });
+```
+
+### send
+
+child_process create with fork, can send message through different process.
+
+
